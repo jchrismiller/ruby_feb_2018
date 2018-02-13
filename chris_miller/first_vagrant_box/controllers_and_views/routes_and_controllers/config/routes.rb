@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # Users Controller
 
   get "users" => 'users#get_users'
+  get "users/total" => 'users#total'
   # get "users/new" => 'users#new'
   # # post "users/new" => 'users#create'
   # get "users/:id" => 'users#get_user'

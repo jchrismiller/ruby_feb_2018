@@ -27,4 +27,9 @@ class UsersController < ApplicationController
 
 		redirect_to '/users'
 	end
+
+	def total
+		@count = User.count
+		render text: "#{@count} users"
+	end
 end
