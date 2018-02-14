@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Survey Form</title>
+</head>
+<body>
+
+	  <%= flash['success'] %>
+
+
+    <p><u>Submitted Information</u></p>
+    <p>Name: <%= @result['name'] %></p>
+    <p>Dojo Location: <%= @result['location'] %></p>
+    <p>Favorite Language: <%= @result['language'] %></p>
+    <p>Comment: <%= @result['comment'] %></p>
+
+    <form action = "/" method="GET">
+    	<button>Go Back</button>
+    </form>
+</body>
+</html>

@@ -1,7 +1,8 @@
 <%= @user.name =%>
-<form action="/users/id/edit" method="patch">
+<form action="/users/<%=@user.id%>" method="post">
+	<input type="hidden" name="_method" value="patch">
 
-	<input name="authenticity_token" value="<%=form_authenticity_token %>" type="hidden">
+	<input name="authenticity_token" value="<%=form_authenticity_token%>" type="hidden">
 
 	<p>Name:</p> 
 	<input type="text" name="name">

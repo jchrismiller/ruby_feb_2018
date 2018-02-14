@@ -1,0 +1,36 @@
+.green{
+	color: green;
+
+}
+
+.red{
+	color: red;
+
+}
+.yellow{
+	color: gold;
+}
+.farm{
+	border-style: solid;
+	border-width: 1px;
+	margin: 10px;
+	padding: 10px;
+}
+.house{
+	border-style: solid;
+	border-width: 1px;
+	margin: 10px;
+	padding: 10px;
+}
+.casino{
+	border-style: solid;
+	border-width: 1px;
+	margin: 10px;
+	padding: 10px;
+}
+.cave{
+	border-style: solid;
+	border-width: 1px;
+	margin: 10px;
+	padding: 10px;
+}
