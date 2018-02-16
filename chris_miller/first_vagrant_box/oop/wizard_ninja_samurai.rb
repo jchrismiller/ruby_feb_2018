@@ -1,5 +1,5 @@
 class Human
-	attr_accessor :health, :strength, :intelligence, :stealth
+	attr_reader :health, :strength, :intelligence, :stealth
 	def initialize
 		@health = 100
 		@strength = 3
