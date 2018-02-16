@@ -18,6 +18,10 @@ class Project
 	def add_tasks(thing)
 		@tasks.push(thing)
 	end
+
+	def print_tasks
+		return
+	end
 end
 projectZ = Project.new("Project 1", "description 1", "Chris")
 puts projectZ.name # => "Project 1"
