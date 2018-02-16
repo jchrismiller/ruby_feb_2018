@@ -9,4 +9,10 @@ rails g controller <controller_name>
 # Install footnotes
 rails g rails_footnotes:install
 
+>>Rails command<<
+rails new assignment -T 
 
+>>Gemfile<<
+gem 'rspec-rails' -- IN development do
+bundle install
+rails g rspec: install
