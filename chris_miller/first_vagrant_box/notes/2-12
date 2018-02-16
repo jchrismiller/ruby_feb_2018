@@ -1,0 +1,15 @@
+2-12
+
+Model Notes
+
+3. Relating two tables
+user.blogs << blog
+Owner.create(user: user, blog: blog)
+
+Self Join
+
+rails g model Friend user: references friend: #(friendee) references
+
+class Friend
+	belongs_to :user, foreign_key: :user_id, class.name 'User'
+	belongs_to :friend, foreign_key: :friendee, class.name 'User'
