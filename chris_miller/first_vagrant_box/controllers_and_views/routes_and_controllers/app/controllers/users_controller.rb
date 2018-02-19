@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-	def get_users
-		render json: User.all
-	end
-
 	def new
 		render 'users/new'
 	end	
@@ -15,6 +11,10 @@ class UsersController < ApplicationController
 	def get_user
 		render json: User.find_by_id( params[:id] )
 	end	
+
+	def get_users
+		render json: User.all
+	end
 
 	def edit
 		@user = User.find_by_id( params[:id] )
