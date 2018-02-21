@@ -20,5 +20,21 @@ RSpec.describe User, type: :model do
     it 'email is blank' do
       expect(build(:user, email: '')).to be_invalid
     end
+    it 'email format is wrong' do
+      emails = ["@user", "@example.com"]
+      emails.each do |email|
+        expect(build(:user, email: email)).to be_invalid
+      end
+    end
+    it 'email is not unique' do
+      create(:user)
+      expect(build(:user)).to be_invalid
+    end
+    it 'password is blank' do
+      expect(build(:user, password: '')).to be_invalid
+    end
+    it "password doesn't match password_confirmation" do
+      expect(build(:user, password_confirmation: 'notpassword')).to be_invalid
+    end
   end
 end

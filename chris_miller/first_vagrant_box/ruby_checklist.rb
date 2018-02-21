@@ -13,6 +13,6 @@ rails g rails_footnotes:install
 rails new assignment -T 
 
 >>Gemfile<<
-gem 'rspec-rails' -- IN development do
+gem 'rspec-rails' -------> IN development do
 bundle install
 rails g rspec: install

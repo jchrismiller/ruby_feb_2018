@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<h1>Sessions#new</h1>
+		<p>Find me in app/views/sessions/new.html.erb</p>
+
+		<form action="/create" method="post">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<p>Email: <input type="text" name="email"></p>
+			<P>password: <input type="text" name="password"></P>
+			<button type="submit" name="login" value="login">Log in</button>
+		</form>
+
+	</body>
+</html>
+
+
+
