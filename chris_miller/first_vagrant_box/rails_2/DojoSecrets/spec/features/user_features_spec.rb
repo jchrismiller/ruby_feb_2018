@@ -9,10 +9,10 @@ feature 'User features' do
 			visit "/users/new"
 		end
 		scenario 'visits sign-up page' do
-			expect(page).to have_field('name')
-			expect(page).to have_field('email')
-			expect(page).to have_field('password')
-			expect(page).to have_field('password_confirmation')
+			expect(page).to have_field('user_form[name]')
+			expect(page).to have_field('user_form[email]')
+			expect(page).to have_field('user_form[password]')
+			expect(page).to have_field('user_form[password_confirmation]')
 		end
 		scenario "with improper inputs, redirects back to sign in and shows validations" do
 			click_button 'Join'
@@ -20,12 +20,12 @@ feature 'User features' do
 			expect(page).to have_text("can't be blank")
 		end
 		scenario "with proper inputs, create user and redirects to login page" do
-			fill_in 'email' with: 'curry@warriors.com'
-			fill_in 'name' with: 'curry'
-			fill_in 'password' with: 'password'
-			fill_in 'password_confirmation' with: 'password_confirmation'
+			fill_in 'user_form[email]', with: 'curry@warriors.com'
+			fill_in 'user_form[name]', with: 'curry'
+			fill_in 'user_form[password]', with: 'password'
+			fill_in 'user_form[password_confirmation]', with: 'password_confirmation'
 			click_button 'Join'
-			expect(current_path).to eq("/session/new")
+			expect(current_path).to eq("/login")
 		end
 	end	
 end

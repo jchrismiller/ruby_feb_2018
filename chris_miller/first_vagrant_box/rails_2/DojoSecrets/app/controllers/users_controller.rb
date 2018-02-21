@@ -9,12 +9,23 @@ class UsersController < ApplicationController
   end
 
   def create
-  	@user = User.create( name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
-  	if @user.valid?
-  		redirect_to '/users'
-  	end
-  	flash[:errors] = @user.errors.full_messages
-  	redirect_to :back
+    user = User.create(get_params)
+
+    if user.valid?
+      session[:user_id] = user.id
+
+      return redirect_to '/login'
+    end
+
+    flash[:errors] = user.errors.full_messages
+
+    return redirect_to '/users/new'
   end
+
+  private
+    def get_params
+      params.require(:user_form).permit(:name, :email, :password)
+    end
+
 
 end
