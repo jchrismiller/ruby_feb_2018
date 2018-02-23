@@ -28,4 +28,13 @@ feature 'User features' do
 			expect(current_path).to eq("/login")
 		end
 	end	
+	feature "user dashboard" do
+		before do
+			log_in
+		end
+		scenario "displays user information" do
+			expect(page).to have_text("#{@user.name}")
+			expect(page).to have_link('Edit Profile')
+		end
+	end
 end

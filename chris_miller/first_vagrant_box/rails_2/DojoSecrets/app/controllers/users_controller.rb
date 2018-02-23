@@ -12,8 +12,7 @@ class UsersController < ApplicationController
     user = User.create(get_params)
 
     if user.valid?
-      session[:user_id] = user.id
-
+      # session[:user_id] = user.id
       return redirect_to '/login'
     end
 
