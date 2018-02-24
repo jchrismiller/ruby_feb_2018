@@ -2,7 +2,15 @@
 
 <h4>Register</h4>
 
+	<% if flash[:errors] %>
+		<% flash[:errors].each do |error| %>
+			<p><%= error %></p>
+		<% end %>
+	<% end %>
+
 	<div class = register>
+		<fieldset>
+		<legend>Register</legend>
 	<form action="/users" method="post">		
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 		
@@ -28,8 +36,12 @@
 
 		<button type="submit">Register</button>
 	</form>
+	</fieldset>
 </div>
 <div class = "register">
+
+	<fieldset>
+		<legend>Login</legend>
 	<form action = "/sessions" method="post">
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 		<p><label>Email</label></p>
@@ -39,4 +51,5 @@
 
 		<button type="submit">Login</button>
 	</form>
+	</fieldset>
 	</div>

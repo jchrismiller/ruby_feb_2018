@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def current_user
   	return User.find(session[:user_id]) if session.key? 'user_id'
   end
+
+	def user_params
+		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+	end
 end

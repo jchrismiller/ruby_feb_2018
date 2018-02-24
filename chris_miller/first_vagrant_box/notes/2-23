@@ -1,0 +1,12 @@
+2-23 Notes
+
+find_by(name: Cat)
+
+Graduate.joins(:resume).
+
+if you add another record, make sure to re-initialize a variable
+
+
+class Project < ApplicationRecord
+	has_many :collaboration
+	has_many :graduates, through: :collaborations

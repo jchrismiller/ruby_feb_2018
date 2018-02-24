@@ -1,26 +1,23 @@
 class SessionsController < ApplicationController
 
 	def new
+		print flash[:errors]
 	end
 
 	def create
-		user = User.find_by(email: params[:email])
+
+		user = User.find_by_email(user_params[:email])
 
 		if user
-			if user.authenticate(params[:password])
+			print "hello IN CREAET"
+			if user.authenticate(user_params[:password])
 				session[:user_id] = user.id
 				
 				return redirect_to '/users'
 			end
-
-			# flash incorrect password
-			# flash[:errors] = @user.errors.full_messages
-		else
-
-		# flash incorrect email
-		# flash[:errors] = @user.errors.full_messages
-		
 		end
+		# flash incorrect email
+		flash[:errors] = ["invalid email or password"]
 
 		return redirect_to :back
 	end
