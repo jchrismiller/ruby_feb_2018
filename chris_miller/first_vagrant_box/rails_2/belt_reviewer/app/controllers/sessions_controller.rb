@@ -9,11 +9,10 @@ class SessionsController < ApplicationController
 		user = User.find_by_email(user_params[:email])
 
 		if user
-			print "hello IN CREAET"
 			if user.authenticate(user_params[:password])
 				session[:user_id] = user.id
 				
-				return redirect_to '/users'
+				return redirect_to '/events'
 			end
 		end
 		# flash incorrect email

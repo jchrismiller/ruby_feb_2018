@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
   end
 
 	def user_params
-		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+		params.require(:user).permit(:first_name, :last_name, :location, :state, :email, :password, :password_confirmation)
 	end
+
+  def event_params
+    params.permit(:name, :date, :location, :state, :user_id)
+  end
 end

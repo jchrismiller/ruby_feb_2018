@@ -7,6 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<a class="links" href="/sessions/<%= current_user.id %>" data-method="delete">Logout</a>
+	<a class="links" href="/users/<%= current_user.id %>/edit">Edit my Profile</a>
 
 <%= yield %>
 

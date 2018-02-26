@@ -1,0 +1,101 @@
+<h4>Welcome, <%= current_user.first_name %></h4>
+
+<div>
+	<h4>Here are some of the events of your state:</h4>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Date</th>
+				<th>Location</th>
+				<th>Host</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if @events %>
+				<% @events.order( 'date DESC' ).each do |e| %>
+				<% if e.state == current_user.state %>
+					<tr>
+						<td><a href="/events/<%= e.id %>"><%= e.name %></a></td>
+						<td><%= e.date %></td>
+						<td><%= e.location %> <%= e.state %></td>
+						<td><%= e.user.first_name %></td>
+						<td>
+							<a href="/events/<%= e.id %>/edit">Edit</a> &emsp;
+							<a href="/participants/<%= e.id %>/destroy" data-method="delete">Cancel</a> &emsp;
+
+							<a href="/participants/<%= e.id %>/create" data-method="post">Join</a>
+						</td>
+					</tr>
+				<% end %>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+
+	<h4>Here are some events outside of your state:</h4>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Date</th>
+				<th>Location</th>
+				<th>Host</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if @events %>
+				<% @events.order( 'date DESC' ).each do |e| %>
+				<% if e.state != current_user.state %>
+			<tr>
+				<td><a href="/events/<%= e.id %>"><%= e.name %></a></td>
+				<td><%= e.date %></td>
+				<td><%= e.location %> <%= e.state %></td>
+				<td><%= e.user.first_name %></td>
+			</tr>
+				<% end %>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+
+
+</div>
+
+<p><h4>Add Event</h4></p>
+
+<form action="/events" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<table>
+	<thead></thead>
+	<tbody>
+		<tr>
+			<td>Name:</td>
+			<td><input type="text" name="name"></td>
+		</tr>
+		<tr>
+			<td>Date:</td>
+			<td><input type="date" name="date"></td>
+		</tr>
+		<tr>
+			<td>Location</td>
+			<td><input type="text" name="location"></td>
+			<td>						
+				<select name="state">
+				  <option value="CA">CA</option>
+				  <option value="WA">WA</option>
+				  <option value="TX">TX</option>
+				  <option value="IL">IL</option>
+				</select> 
+			</td>
+			<td><input type="hidden" name="user_id" value="<%=current_user.id %>"></td>
+		</tr>
+		<tr>
+			<td><button>Add Event</button></td>
+		</tr>
+
+	</tbody>
+</table>
+</form>

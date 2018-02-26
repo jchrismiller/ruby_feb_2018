@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   root 'users#new'
   resources :users
+  resources :events
   resources :sessions, only: [:new, :create, :destroy]
+
+  # Participant routes
+  post "events/( :event_id )/participants/create" => "participants#create"
+  delete "participants/( :id )/destroy" => "participants#destroy"
+
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

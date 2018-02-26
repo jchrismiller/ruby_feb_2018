@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Profile</title>
+
+	<h3>Edit Your Profile</h3>
+</head>
+<body>
+	<form action="/users/<%= current_user.id %>" method="post">
+		<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>" >
+		<input type="hidden" name="_method" value="patch" >
+		<table>
+			<thead></thead>
+			<tbody>
+				<tr>
+					<td>First Name:</td>
+					<td><input type="text" name="first_name" value="<%= current_user.first_name %>"></td>
+				</tr>
+				<tr>
+					<td>Last Name:</td>
+					<td><input type="text" name="last_name" value="<%= current_user.last_name %>"></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="email" name="email" value="<%= current_user.email %>"></td>
+				</tr>
+				<tr>
+					<td>Location:</td>
+					<td><input type="text" name="location" value="<%= current_user.location %>"></td>
+					<td> 
+						<select name="state">
+							  <option value="CA">CA</option>
+							  <option value="WA">WA</option>
+							  <option value="TX">TX</option>
+							  <option value="IL">IL</option>
+						</select> 
+					</td>
+				</tr>
+				<tr>
+					<td><button>Update</button></td>
+				</tr>
+				
+
+			</tbody>
+		</table>
+		
+	</form>
+	
+
+</body>
+</html>
