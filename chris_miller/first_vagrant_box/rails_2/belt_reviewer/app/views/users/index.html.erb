@@ -1,3 +1,5 @@
 <h4>Welcome <%= current_user.first_name %></h4>
 
 <a href="/sessions/<%= current_user.id %>" data-method="delete">Logout<a>
+
+<a class="links" href="/users/<%= current_user.id %>/edit">Edit my Profile</a>

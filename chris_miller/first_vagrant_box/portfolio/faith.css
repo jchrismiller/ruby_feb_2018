@@ -1,0 +1,13 @@
+body{
+	font-family: "Arial";
+}
+img{
+	padding: 5px 0px 0px 5px;
+}
+.header{
+	display: flex;
+  	justify-content: space-between;
+}
+.no_underline{
+	text-decoration: none;
+}
