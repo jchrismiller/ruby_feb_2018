@@ -1,0 +1,44 @@
+<h3>Hi <%= current_user.alias %>!
+	<a class="links" href="/sessions/<%= current_user.id %>" data-method="delete">Logout</a>
+
+<form action="/bright_ideas" method="post">
+	<input id="post" type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<p><input type="text" name="content" value="Post something witty here..."> <button>Idea!</button></p>
+<p><input type="hidden" name="user_id" value="<%= current_user.id %>"></p>
+
+</form>
+
+<% if @bright_ideas %>
+	<% @bright_ideas.each do |idea| %>
+	<table>
+		<thead></thead>
+		<tbody>
+			<tr>
+				<td><a href="/users/<%= idea.user.id %>"><%= idea.user.alias %></a> says:</td>
+				<td class = "content"><%= idea.content %></td>
+				<% if idea.user.alias == current_user.alias %>
+					<td>
+						<a href="/bright_ideas/<%= idea.id %>" data-method="delete">
+							Delete
+						</a>
+					</td>
+				<% end %>
+			</tr>
+			<tr>
+				<td>
+					<form action="likes" method="post">
+						<input id="post" type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<input type="hidden" name="user_id" value="<%= current_user.id %>">
+						<input type="hidden" name="bright_idea_id" value="<%= idea.id %>">
+
+						<button>Like</button> <a href="/bright_ideas/<%= idea.id %>"><%= idea.likes.count %> people</a> like this
+					</form>
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+
+	<% end %>
+<% end %>

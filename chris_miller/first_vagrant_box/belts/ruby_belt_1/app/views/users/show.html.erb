@@ -1,0 +1,22 @@
+<a class="links" href="/bright_ideas">Bright Ideas</a>
+<a class="links" href="/sessions/<%= current_user.id %>" data-method="delete">Logout</a>
+<table>
+	<thead></thead>
+	<tbody>
+		<tr>
+			<td>Name:</td>
+			<td><%= @user.name %></td>
+		</tr>
+		<tr>
+			<td>Alias:</td>
+			<td><%= @user.alias %></td>
+		</tr>
+		<tr>
+			<td>Email:</td>
+			<td><%= @user.email %></td>
+		</tr>
+	</tbody>
+</table>
+-----------------
+<p>Total Number of Posts: <%= @bright_ideas %><p>
+<p>Total Likes by User: <%= @likes %></p>

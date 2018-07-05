@@ -1,0 +1,54 @@
+<h2>Users#new</h2>
+
+	<% if flash[:errors] %>
+		<% flash[:errors].each do |error| %>
+			<p><% error %></p>
+		<% end %>
+	<% end %>
+
+	<div class = register>
+		<fieldset>
+		<legend>Register</legend>
+	<form action="/users" method="post">		
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		
+		<p><label>Name</label>
+		<input class = "register_input" type="text" name="user[name]" />
+		</p>
+
+		<p><label>Alias</label>
+		<input class = "register_input" type="text" name="user[alias]" />
+		</p>
+
+		<p><label>Email</label>
+		<input class = "register_input" type="email" name="user[email]" />
+		</p>
+
+		<p><label>Password</label>
+		<input class = "register_input" type="password" name="user[password]" />
+		</p>
+
+		<p><label>Password Confirmation</label>
+		<input class = "register_input" type="password" name="user[password_confirmation]" />
+		</p>
+
+		<button type="submit">Register</button>
+	</form>
+	</fieldset>
+</div>
+<div class = "register">
+
+	<fieldset>
+		<legend>Login</legend>
+	<form action = "/sessions" method="post">
+		<input class = "register_input" type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<p><label>Email</label>
+		<input class = "register_input" type="email" name="user[email]">
+		</p>
+		<p><label>Password</label>
+		<input class = "register_input" type="password" name="user[password]">
+		</p>
+		<button type="submit">Login</button>
+	</form>
+	</fieldset>
+	</div>

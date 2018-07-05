@@ -10,3 +10,8 @@ if you add another record, make sure to re-initialize a variable
 class Project < ApplicationRecord
 	has_many :collaboration
 	has_many :graduates, through: :collaborations
+
+
+
+Collaboration.create(graduate: graduate, project: project)
+graduate.projects << project
